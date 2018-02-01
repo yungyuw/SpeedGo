@@ -22,6 +22,6 @@ USAGE
 
 1. go run `speedgo.go <speedgo.go>`_
 
-2. The webpages can run individually on other place or server.[1]_ 
+2. The webpages can run individually on other place or server. [1]_ 
 
 .. [1] please modify the ip first
