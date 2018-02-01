@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Sample of websocket with golang</title>
+		<script src="jquery-2.1.4.min.js"></script>
+		<script>
+      $(function() {
+	var data = "";
+	for ( i = 0 ; i < 10000 ; i++){
+	data += "M";
+	}
+	var i;
+        var ws = new WebSocket("ws://your_ip:8090/echo");
+	ws.onopen = function() {
+          ws.send("UPLOAD");
+ 	  var i;
+	  for ( i = 0 ; i < 80000 ; i++) {
+	  //for ( i = 0 ; i < 10000 ; i++) {
+	    ws.send(data);
+	  }
+	  ws.send("e");
+	};
+	ws.onmessage = function(e) {
+          console.log(e.data);
+	  ws.close();
+	};
+      });
+		</script>
+	</head>
+	<body>
+        <p>hi</p>
+	</body>
+</html>

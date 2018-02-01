@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Sample of websocket with golang</title>
+		<script src="jquery-2.1.4.min.js"></script>
+		<script>
+		
+	    function print(message) {
+	        output.append(" <div>" + message + "</div>");
+	    }
+        $(function() {
+			var ws = new WebSocket("ws://your_ip:8090/ping");
+			ws.onopen = function() {
+				stime = Date.now();
+			  	ws.send(stime);
+			};   
+			ws.onmessage =  function(e) {
+				var rtime = Date.now();
+                ws.send((rtime - stime).toString());
+			    print("Server to client :" + (rtime - parseInt(e.data)).toString() + "ms.");
+			    print("round-trip time :" + (rtime - stime).toString() + "ms.");
+			};
+        });
+		</script>
+	</head>
+	<body>
+        <p>hi</p>
+        <div id="output"></div>
+        <script>
+        output = $("#output");
+        </script>
+	</body>
+</html>

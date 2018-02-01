@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Sample of websocket with golang</title>
+		<script src="jquery-2.1.4.min.js"></script>
+		<script>
+      $(function() {
+        var ws = new WebSocket("ws://your_ip:8090/echo");
+	ws.onopen = function() {
+          ws.send("DOWNLOAD");
+	};
+	ws.onmessage = function(e) {
+	  if (e.data[0] != "D") {
+	       console.log(e.data);
+	       ws.close();
+	  }
+	};
+      });
+		</script>
+	</head>
+	<body>
+        <p>hi</p>
+	</body>
+</html>
